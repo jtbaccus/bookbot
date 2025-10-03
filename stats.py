@@ -15,3 +15,34 @@ def character_counter(book_text):
         else:
             char_dict[char] = 1
     return char_dict
+
+'''Chat GPTs initial suggestion:
+
+def sort_characters(char_dict):
+    # Convert dictionary into a list of {"char": c, "num": n}
+    char_list = []
+    for c, n in char_dict.items():
+        if c.isalpha():   # only include letters
+            char_list.append({"char": c, "num": n})
+
+    # Sort the list by "num" descending
+    char_list.sort(key=lambda item: item["num"], reverse=True)
+
+    return char_list '''
+
+# My rookie attempt after Chat GPT walked me through the cleaner way above
+
+def sort_on(item):
+    return item["num"]
+
+def sort_characters(char_dict):
+    # Convert dictionary into a list of {"char": c, "num": n}
+    char_list = []
+    for c, n in char_dict.items():
+        if c.isalpha():   # only include letters
+            char_list.append({"char": c, "num": n})
+
+    # Sort the list by "num" descending
+    char_list.sort(key=sort_on, reverse=True)
+
+    return char_list
